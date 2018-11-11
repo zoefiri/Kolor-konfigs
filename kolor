@@ -1,0 +1,53 @@
+#!/bin/sh
+cd "$(dirname "$0")"
+#++++++++++++++++++++++++++
+#colors
+b0="#231e18"
+b1="#302b25"
+b2="#48413a"
+b3="#9d8b70"
+b4="#b4a490"
+b5="#cabcb1"
+b6="#d7c8bc"
+b7="#e4d4c8"
+b8="#d35c5c"
+b9="#ca7f32"
+bA="#e0ac16"
+bB="#b7ba53"
+bC="#6eb958"
+bD="#88a4d3"
+bE="#95cbbb"
+bF="#b49368"
+
+#++++++++++++++++++++++++++
+#sed thing
+fillcolors() {
+configtemplate=$1
+cp templates/$configtemplate new/${configtemplate}new
+newconfig="new/${configtemplate}new"
+sed -i "
+s/zc0/$b0/g 
+s/zc1/$b1/g
+s/zc2/$b2/g 
+s/zc3/$b3/g 
+s/zc4/$b4/g 
+s/zc5/$b5/g 
+s/zc6/$b6/g
+s/zc7/$b7/g
+s/zc8/$b8/g
+s/zc9/$b9/g
+s/zcA/$bA/g
+s/zcB/$bB/g
+s/zcC/$bC/g
+s/zcD/$bD/g
+s/zcE/$bE/g 
+s/zcF/$bF/g" $newconfig
+}
+
+#++++++++++++++++++++++++++
+confs=$(ls ./templates/)
+for conf in $confs
+do
+	fillcolors $conf
+done
+#++++++++++++++++++++++++++
